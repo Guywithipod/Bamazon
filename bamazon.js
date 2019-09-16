@@ -7,7 +7,7 @@ var connection = mysql.createConnection({
     port: 3306,
     user: "root",
     password: "root",
-    database: "top_5000_songs_DB"
+    database: "bamazon"
   });
 
   
@@ -22,20 +22,24 @@ inquirer.prompt([
         message: "How many units do you wish to purchuse?"
       },
   ]).then(function(answers) {
-const purchusedItem = answers.name
-const itemUnits = answers.units
+readtable(answers)
   });
 
   
-// function readtable(artist) {
-//     console.log("Selecting artist top_songs...\n");
-//     connection.query("SELECT * FROM top_songs where artist=" + `"` + artist+ `"`, function(err, res) {
-//       if (err) throw err;
-//       console.log(res);
-//       connection.end();
-//     });
+function readtable(answers) {
+    connection.query("SELECT * FROM products where stock_quantity =" + `"` + answers.units + `"`, function(err, res) {
+      if (err) throw err;
+      if(answers.units < 1){
+          console.log("Insufficient quantity!");
+      }
+      connection.end();
+    });
+}
+
+// const updateTable = () => {
+
 // }
 
 
 
-// console.log(readtable())
+
