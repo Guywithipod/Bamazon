@@ -12,7 +12,7 @@ CREATE TABLE products (
   product_name VARCHAR(30) NOT NULL,
   department_name VARCHAR(30),
   price INTEGER(10),
-  stock_quantity INTEGER(10)
+  stock_quantity INTEGER(10),
   PRIMARY KEY (id)
 );
 
