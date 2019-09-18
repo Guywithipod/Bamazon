@@ -3,7 +3,7 @@ Bamazon is a command line app that presents items for sale to a customer. The in
  here is the link to the git hub pages app repo. https://github.com/Guywithipod/Bamazon
 
 there is a video that showcases the app in the repo, the same video can be found here 
-[![Watch the video](https://img.youtube.com/vi/fhBXj8xwEbo/maxresdefault.jpg)](https://www.youtube.com/watch?v=9bLSTcob6fM&feature=youtu.be)
+[![Watch the video](https://img.youtube.com/vi/9bLSTcob6fM&/maxresdefault.jpg)](https://www.youtube.com/watch?v=9bLSTcob6fM&feature=youtu.be)
 
 
  the technologies used in the app are inquirer and MySQL
