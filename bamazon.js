@@ -22,7 +22,7 @@ connection.query("SELECT item_id, product_name, price FROM products", function (
 
     {
       name: "units",
-      message: "How many units do you wish to purchuse?"
+      message: "How many units do you wish to purchase?"
     },
   ]).then(function (answers) {
     readtable(answers);
@@ -33,18 +33,13 @@ connection.query("SELECT item_id, product_name, price FROM products", function (
     connection.query("SELECT item_id FROM products", function (err, res) {
       if (err) throw err;
       const Id = answers.name;
-      console.log(Id);
-
       connection.query("SELECT price, product_name, stock_quantity FROM products WHERE item_id=" + Id, function (err, res) {
 // here the old stock quantity of the item they purchused is turned into a string. Also the new stock quantity is calcuted here as well.
-        console.log(res[0].product_name);
         const oldStockQuantity = res[0].stock_quantity;
         const newStockQuantity = oldStockQuantity - answers.units;
         const array = [];
         const json = JSON.stringify(oldStockQuantity);
         array.push(json);
-        console.log(array);
-        console.log(newStockQuantity, oldStockQuantity);
         const price = res[0].price * answers.units;
 // If there is not enough stock quantity then the msg "Insufficent Stock!" is displayed.
         if (answers.units > oldStockQuantity) {
@@ -54,7 +49,6 @@ connection.query("SELECT item_id, product_name, price FROM products", function (
 // if there is enough stock quantity then the SQL data base is updated with the new stock quantity.
         if (oldStockQuantity > answers.units) {
           connection.query("UPDATE products SET stock_quantity=" + newStockQuantity + " WHERE stock_quantity=" + array[0]);
-
           console.log("Your total comes to " + price + "$")
           console.log("Thank you for shopping with Bamazon.")
           console.log("Have a nice day!")
