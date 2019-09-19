@@ -10,10 +10,8 @@ const connection = mysql.createConnection({
 // here is where we first console log all the information to the terminal for the customer's sake.
 connection.query("SELECT item_id, product_name, price FROM products", function (err, res) {
   if (err) throw err;
-  for (let i = 0; i < res.length; i++) {
-    console.log("Item ID:" + res[i].item_id + "     Product Name:" + res[i].product_name + "        Price:" + res[i].price);
-  }
-  // after the customer has browsed for a bit he/she is promped two questions.
+  console.table(res)
+   // after the customer has browsed for a bit he/she is promped two questions.
   inquirer.prompt([
     {
       name: "name",
